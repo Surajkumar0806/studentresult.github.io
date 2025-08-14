@@ -1,0 +1,85 @@
+/* Background and layout styling */
+.checkresult-background {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #e8e2d6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkresult-background::before,
+.checkresult-background::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.checkresult-background::before {
+  width: 400px;
+  height: 400px;
+  background-color: #d5ba3f;
+  top: -100px;
+  left: -100px;
+}
+
+.checkresult-background::after {
+  width: 500px;
+  height: 500px;
+  background-color: #3f5834;
+  bottom: -150px;
+  right: -150px;
+}
+
+/* Form Container */
+.checkresult-container {
+  background-color: #ffffffcc;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Heading */
+.checkresult-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form styling */
+.checkresult-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.checkresult-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3f5834;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkresult-form button:hover {
+  background-color: #2e4227;
+}
+
+/* Error text */
+.checkresult-error {
+  margin-top: 10px;
+  color: red;
+  font-weight: 500;
+}
