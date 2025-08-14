@@ -12,7 +12,37 @@ const cors = require('cors');
 const Admin = require('./models/Admin');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+// ========== Blockchain Integration Start ==========
 
+const { ethers } = require("ethers");
+
+const contractJson = require("C:/Users/SURAJKUMAR/Desktop/PROJECT/blockchain-setup/artifacts/contracts/StudentResultStorage.sol/StudentResultStorage.json");
+const contractABI = contractJson.abi;
+
+// Paste your deployed contract address here:
+//this is added on .env
+
+// Hardhat local node RPC
+//this is added on .env
+
+
+// Paste one private key shown in the output when running `npx hardhat node` (don't share this key publicly)
+//this is added on .env
+
+const blockchainContract = new ethers.Contract(contractAddress, contractABI, wallet);
+
+// Helper function
+async function saveHashOnBlockchain(studentID, pdfHash) {
+  try {
+    const tx = await blockchainContract.addOrUpdateResult(studentID, pdfHash);
+    await tx.wait();
+    console.log(`✅ Hash stored on blockchain: ${studentID} ${pdfHash}`);
+  } catch (err) {
+    console.error("❌ Blockchain error:", err);
+  }
+}
+
+// ========== Blockchain Integration End ==========
 // Middleware setup
 app.use(cors());
 app.use(express.json());
@@ -83,7 +113,7 @@ app.post('/submit-result',verifyToken, async (req, res) => {
     student.pdfHash = pdfHash;
 
     await student.save();
-    
+    await saveHashOnBlockchain(rollNo, pdfHash); // Added this line suraj    
 
     // Save PDF locally
     const filePath = path.join(__dirname, `results/result-${student._id}.pdf`);
