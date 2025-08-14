@@ -1,0 +1,85 @@
+/* Background circles */
+.login-page-wrapper {
+  min-height: 100vh;
+  background-color: #48614e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.login-page-wrapper::before,
+.login-page-wrapper::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: #f5c94e;
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.login-page-wrapper::before {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: -150px;
+}
+
+.login-page-wrapper::after {
+  width: 500px;
+  height: 500px;
+  bottom: -120px;
+  right: -100px;
+}
+
+/* Outer cream card */
+.login-container {
+  background-color: #fcf8ef;
+  border-radius: 24px;
+  padding: 60px 40px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.login-container h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Inputs & button */
+form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background: #fdf8e6;
+  margin-bottom: 16px;
+}
+
+form button {
+  width: 100%;
+  background-color: #f5c94e;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #eabf3c;
+}
+
+form button:disabled {
+  background-color: #c9b13d;
+  cursor: not-allowed;
+}
